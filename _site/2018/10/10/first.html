@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golang 第一战  - Golang第一战</title>
+    <meta name="author"  content="Dyz">
+    <meta name="description" content="Golang 第一战 ">
+    <meta name="keywords"  content="Golang, 区块链, Golang设计">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Golang 第一战  - Golang第一战">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost:4000/2018/10/10/first.html">
+    <meta property="og:description" content="Golang技术博客，Golang分布式与区块连，Golang开源框架等，很高兴能在这里与你分享我对技术和生活的思考。">
+    <meta property="og:site_name" content="Golang第一战">
+    <link rel="stylesheet" href="//cdn.staticfile.org/normalize/6.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_roc50gemkxpw4s4i.css">
+    <link rel="stylesheet" href="/assets/css/github-markdown.css">
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    <link rel="stylesheet" href="/assets/css/share.min.css">
+    <link rel="stylesheet" href="/assets/css/app.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+	
+    <!--
+Author: Ray-Eldath
+-->
+<style>
+    .markdown-body .anchor{
+        float: left;
+        margin-top: -8px;
+        margin-left: -20px;
+        padding-right: 4px;
+        line-height: 1;
+        opacity: 0;
+    }
+    
+    .markdown-body .anchor .anchor-icon{
+        font-size: 15px
+    }
+</style>
+<script>
+    $(document).ready(function() {
+        let nodes = document.querySelector(".markdown-body").querySelectorAll("h1,h2,h3")
+        for(let node of nodes) {
+            var anchor = document.createElement("a")
+            var anchorIcon = document.createElement("i")
+            anchorIcon.setAttribute("class", "fa fa-anchor fa-lg anchor-icon")
+            anchorIcon.setAttribute("aria-hidden", true)
+            anchor.setAttribute("class", "anchor")
+            anchor.setAttribute("href", "#" + node.getAttribute("id"))
+            
+            anchor.onmouseover = function() {
+                this.style.opacity = "0.4"
+            }
+            
+            anchor.onmouseout = function() {
+                this.style.opacity = "0"
+            }
+            
+            anchor.appendChild(anchorIcon)
+            node.appendChild(anchor)
+        }
+    })
+</script>
+</head>
+
+
+<body>
+  <!--[if lt IE 10]>
+<div class="alert-danger" role="alert">你的浏览器实在太太太旧了，放学别走，升级完浏览器再说！<a target="_blank" class="alert-link" href="http://browsehappy.com">立即升级</a></div>
+<![endif]-->
+  <input id="nm-switch" type="hidden" value="false"> <header class="g-header">
+    <div class="g-logo">
+      <a href="/"></a>
+    </div>
+    <i id="menu-toggle" class="iconfont icon-menu"></i>
+    <nav class="g-nav">
+        <ul>
+            
+            <li><a href="/">home</a></li>
+            
+            <li><a href="/tags.html">tags</a></li>
+            
+        </ul>
+    </nav>
+</header>
+
+
+  <header
+    class="g-banner post-header post-pattern-circuitBoard bgcolor-default post-no-cover"
+    data-theme="default"
+  >
+    <div class="post-wrapper">
+      <div class="post-tags">
+        
+          
+            <a href="http://localhost:4000/tags#Golang" class="post-tag">Golang</a>
+          
+            <a href="http://localhost:4000/tags#%E5%8C%BA%E5%9D%97%E9%93%BE" class="post-tag">区块链</a>
+          
+            <a href="http://localhost:4000/tags#Golang%E8%AE%BE%E8%AE%A1" class="post-tag">Golang设计</a>
+          
+        
+      </div>
+      <h1>Golang 第一战 </h1>
+      <div class="post-meta">
+        <span class="post-meta-item"><i class="iconfont icon-author"></i>Dyz</span>
+        <time class="post-meta-item" datetime="18-10-10"><i class="iconfont icon-date"></i>10 Oct 2018</time>
+      </div>
+    </div>
+    
+  </header>
+
+  <div class="post-content visible">
+    
+
+    <article class="markdown-body">
+      <blockquote>
+  <p>Golang第一战 开篇</p>
+</blockquote>
+
+<h1 id="欢迎来到我的技术博客">欢迎来到我的技术博客</h1>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="x">	</span><span class="k">import</span><span class="x"> </span><span class="s">"fmt"</span><span class="x">
+	
+	</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="x"> </span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+		</span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"welcome to dyzsoft.com"</span><span class="p">)</span><span class="x">
+	</span><span class="p">}</span><span class="x">
+
+</span></code></pre></div></div>
+<h1 id="1go语言的由来">1.Go语言的由来</h1>
+<p>Go语言亦叫Golong语言，是由谷歌Goggle公司推出。Go语言的主要开发者有：肯.汤姆逊(Ken Thompson)、罗布.派克(Rob Pike)和罗伯特.格里泽默(Robert Griesemer)。</p>
+
+<h1 id="2开发go语言的初衷">2开发Go语言的初衷</h1>
+<p>根据Go语言开发者自述，近10多年，从单机时代的C语言到现在互联网时代的Java，都没有令人满意的开发语言，而 C++往往给人的感觉是，花了100%的经历，却只有60%的开发效率，产出比太低，Java和C#的哲学又来源于C++。并且，随着硬件的不断升级，这些语言不能充分的利用硬件及CPU。因此，一门高效、简洁、开源的语言诞生了。</p>
+
+<h1 id="3go语言的特点">3.Go语言的特点</h1>
+<p>Go语言保证了既能到达静态编译语言的安全和性能，又达到了动态语言开发速度和易维护性，有人形容Go语言：<code class="highlighter-rouge">Go = C + Python</code> , 说明Go语言既有C静态语言程序的运行速度，又能达到Python动态语言的快速开发。</p>
+
+<h3 id="后记">后记</h3>
+
+<p>后续会陆续更新 技术博文</p>
+
+    </article>
+
+    
+    <div class="social-share-wrapper">
+      <div class="social-share"></div>
+    </div>
+    
+  </div>
+
+  <section class="author-detail">
+    <section class="post-footer-item author-card">
+      <div class="avatar">
+        <img src="http://localhost:4000/assets/img/profile.jpg" alt="">
+      </div>
+      <div class="author-name" rel="author">Dyz</div>
+      <div class="bio">
+        <p>技术开发者，热爱技术&设计</p>
+      </div>
+      
+      <ul class="sns-links">
+        
+        <li>
+          <a href="//weibo.com/" target="_blank">
+                    <i class="iconfont icon-weibo"></i>
+                </a>
+        </li>
+        
+        <li>
+          <a href="//github.com/dyzsoft" target="_blank">
+                    <i class="iconfont icon-github"></i>
+                </a>
+        </li>
+        
+      </ul>
+      
+    </section>
+    <section class="post-footer-item read-next">
+      
+
+      
+    </section>
+    
+  </section>
+
+  <footer class="g-footer">
+  <section>Golang第一战 ©
+  
+  
+  2018
+  </section>
+  <section>Powered by <a href="//jekyllrb.com"> dyzsoft.com</a> | <a href="https://github.com/kaeyleo/jekyll-theme-H2O">Theme H2O</a></section>
+</footer>
+
+
+  <script src="/assets/js/social-share.min.js"></script>
+  <script>
+    socialShare('.social-share', {
+      sites: [
+        
+          'wechat'
+          ,
+          
+        
+          'weibo'
+          ,
+          
+        
+          'douban'
+          ,
+          
+        
+          'twitter'
+          
+        
+      ],
+      wechatQrcodeTitle: "分享到微信朋友圈",
+      wechatQrcodeHelper: '<p>扫码后点击右上角</p><p>将本文分享至朋友圈</p>'
+    });
+  </script>
+
+  
+
+  <script src="/assets/js/prism.js"></script>
+  <script src="/assets/js/index.min.js"></script>
+  
+</body>
+
+</html>
