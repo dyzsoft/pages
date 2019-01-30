@@ -9,15 +9,18 @@ tags: centos linux Kubernetes
 
 
 
-#1.前言
-
 > Kubernetes Dashboard is a general purpose, web-based UI for Kubernetes clusters. It allows users to manage applications running in the cluster and troubleshoot them, as well as manage the cluster itself.  
+
+# 1.前言
 
 **一句话简单介绍下Kubernetes Dashboard**
 Kubernetes Dashboard就是k8s集群的webui，集合了所有命令行可以操作的所有命令。界面如下所示：(ps：目前自动识别为中文版本)
 ![dashboard-ui.png](https://upload-images.jianshu.io/upload_images/15414238-d5f142cb8f97f170.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-#2.安装
+
+# 2.安装
+
 k8s的dashboard安装可以说是非常简单，参考github的指导既可。项目地址如下：
+
 > https://github.com/kubernetes/dashboard
 ```
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
@@ -25,9 +28,11 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/s
 ```
 但是这么安装存在几个问题：
 1. 镜像国内无法直接访问，需要设置docker代理，才能下载镜像 
+
 2. dashboard的默认webui证书是自动生成的，由于时间和名称存在问题，导致谷歌和ie浏览器无法打开登录界面，经过测试Firefox可以正常打开
 
-##2.1 设置docker代理
+## 2.1 设置docker代理
+
 k8s dashboard 的 docker镜像是
 `k8s.gcr.io/kubernetes-dashboard-amd64:v1.10.0`
 在执行 `kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml ` 前，首先设置docker代理
@@ -94,6 +99,7 @@ esac
 请将 以上脚本中 `proxy_ip="http://192.168.246.1:1080" ` 替换为你自己的代理地址，保存为`dockersetproxy.sh` ，通过`chmod +x  dockersetproxy.sh`  增加执行权限 。
 然后执行 `kubectl apply -f  https://......` 命令参考上面
 如果能够正常下载，通过docker image ls查看，应该如下所示：
+
 ```
 [root@master ~]# docker image ls
 REPOSITORY                              TAG                 IMAGE ID            CREATED             SIZE
@@ -195,9 +201,11 @@ ens33: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 
 ![image.png](https://upload-images.jianshu.io/upload_images/15414238-cc1cfbae2df9788c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-##2.2 解决证书过期问题
-###2.2.1 首先需要生成证书
+## 2.2 解决证书过期问题
+### 2.2.1 首先需要生成证书
+
 生成证书通过openssl生成自签名证书即可，不再赘述，参考如下所示：
+
 ```
 [root@master keys]# pwd
 /root/keys
@@ -274,7 +282,7 @@ Certificate:
 ```
 这样就有了证书文件dashboard.crt 和 私钥 dashboad.key
 
-###2.2.2 下载yaml，并修改
+### 2.2.2 下载yaml，并修改
 `wget  https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml`
 将该配置文件下载下来
 
@@ -371,9 +379,11 @@ spec:
   selector:
     k8s-app: kubernetes-dashboard
 ```
-###2.2.3 生成secret
+### 2.2.3 生成secret
+
  创建同名称的secret：
 名称为： kubernetes-dashboard-certs
+
 ```bash
 [root@master keys]# ls
 dashboard.crt  dashboard.csr  dashboard.key  kubernetes-dashboard.yaml
@@ -399,7 +409,8 @@ dashboard.key:  1675 bytes
 [root@master keys]# 
 ```
 可以看到，已经成功创建了 secret文件
-###2.2.4 重新apply yaml文件
+
+### 2.2.4 重新apply yaml文件
 
 应用下载到本地并且修改过的yaml文件，如下所示：
 
